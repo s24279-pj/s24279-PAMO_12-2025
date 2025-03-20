@@ -50,7 +50,21 @@ class MainActivity : AppCompatActivity() {
         val bmi = weight / (heightInMeters * heightInMeters)
 
         binding.bmiResult.text = "Your BMI: %.2f".format(bmi)
+        binding.bmiMessage.text = "You are %s".format(bmiMessage(bmi))
         binding.bmiResult.visibility = View.VISIBLE
+    }
+
+    private fun bmiMessage(bmi: Float): String {
+        if (bmi < 18.5)
+            return "underweight"
+        if(bmi < 25.0)
+            return "normal"
+        if (bmi < 30.0)
+            return "overweight"
+        if (bmi < 35.0)
+            return "obese"
+
+        return "extremely obese"
     }
 
 }
