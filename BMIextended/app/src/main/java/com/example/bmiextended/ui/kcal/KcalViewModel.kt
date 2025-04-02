@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 
 class KcalViewModel(private val savedStateHandle: SavedStateHandle) : ViewModel() {
 
-    private val _kcalResult = MutableLiveData<String>("Calculate kcal first")
+    private val _kcalResult = MutableLiveData<String>()
     val kcalResult: LiveData<String> = _kcalResult
 
     private val _totalKcal = MutableLiveData<Float>(0f)
@@ -42,7 +42,7 @@ class KcalViewModel(private val savedStateHandle: SavedStateHandle) : ViewModel(
         val totalKcalValue = (harrisBenedictPattern * activityLevel).toFloat()
 
         _totalKcal.value = totalKcalValue
-        setSavedKcal(totalKcalValue)  // Zapamiętanie wartości
+        setSavedKcal(totalKcalValue)
         savedStateHandle["total_kcal"] = totalKcalValue
         _kcalResult.value = "Total kcal requirement: %.2f kcal".format(totalKcalValue)
     }

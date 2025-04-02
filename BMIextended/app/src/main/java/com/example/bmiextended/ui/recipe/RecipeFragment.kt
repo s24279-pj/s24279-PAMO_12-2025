@@ -4,13 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.SavedStateViewModelFactory
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bmiextended.adapter.RecipeAdapter
 import com.example.bmiextended.databinding.FragmentRecipeBinding
@@ -40,29 +36,16 @@ class RecipeFragment : Fragment() {
 
         binding.recipeRecyclerView.layoutManager = LinearLayoutManager(context)
 
-        val savedKcal = kcalViewModel.getTotalKcalFromSavedState()
-
-        if (savedKcal > 0) {
-            binding.kcalResultInfo.text = "Total kcal: %.2f".format(savedKcal)
-            recipeViewModel.setKcalRequirement(savedKcal)
-        } else {
-            binding.kcalResultInfo.text = "Calculate kcal first."
-        }
-
-        kcalViewModel.totalKcal.observe(viewLifecycleOwner) { totalKcal ->
-            if (totalKcal > 0) {
-                binding.kcalResultInfo.text = "Total kcal: %.2f".format(totalKcal)
-                recipeViewModel.setKcalRequirement(totalKcal)
-            } else {
-                binding.kcalResultInfo.text = "Calculate kcal first."
-            }
-        }
-
         recipeViewModel.recipes.observe(viewLifecycleOwner) { recipes ->
             binding.recipeRecyclerView.adapter = RecipeAdapter(recipes)
         }
-    }
+        val savedKcal = kcalViewModel.getTotalKcalFromSavedState()
 
+        if (savedKcal > 0) {
+            binding.kcalResultInfo.text = "Recommended for kcal: %.2f".format(savedKcal)
+            recipeViewModel.setKcalRequirement(savedKcal)
+        }
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
