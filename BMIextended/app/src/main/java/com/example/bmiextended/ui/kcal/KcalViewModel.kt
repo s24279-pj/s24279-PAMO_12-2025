@@ -2,12 +2,26 @@ package com.example.bmiextended.ui.kcal
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 
-class KcalViewModel : ViewModel() {
+class KcalViewModel(private val savedStateHandle: SavedStateHandle) : ViewModel() {
 
-    private val _kcalResult = MutableLiveData<String>()
+    private val _kcalResult = MutableLiveData<String>("Calculate kcal first")
     val kcalResult: LiveData<String> = _kcalResult
+
+    private val _totalKcal = MutableLiveData<Float>(0f)
+    val totalKcal: LiveData<Float> = _totalKcal
+
+    companion object {
+        private var savedKcal: Float = 0f
+
+        fun getSavedKcal(): Float = savedKcal
+
+        fun setSavedKcal(value: Float) {
+            savedKcal = value
+        }
+    }
 
     fun calculateKcal(ageInput: String, weightInput: String, heightInput: String, activityLevel: Float) {
         if (weightInput.isEmpty() || heightInput.isEmpty() || ageInput.isEmpty()) {
@@ -19,16 +33,21 @@ class KcalViewModel : ViewModel() {
         val weight = weightInput.toFloatOrNull()
         val height = heightInput.toFloatOrNull()
 
-        if (weight == null || height == null || age == null || age <=0 || weight <= 0 || height <= 0) {
+        if (weight == null || height == null || age == null || age <= 0 || weight <= 0 || height <= 0) {
             _kcalResult.value = "Invalid input. Enter values above 0."
             return
         }
 
         val harrisBenedictPattern = 10 * weight + 6.25 * height - 5 * age + 5
+        val totalKcalValue = (harrisBenedictPattern * activityLevel).toFloat()
 
-        val totalKcal = harrisBenedictPattern * activityLevel
+        _totalKcal.value = totalKcalValue
+        setSavedKcal(totalKcalValue)  // Zapamiętanie wartości
+        savedStateHandle["total_kcal"] = totalKcalValue
+        _kcalResult.value = "Total kcal requirement: %.2f kcal".format(totalKcalValue)
+    }
 
-        _kcalResult.value = "Total kcal requirement: %.2f kcal".format(totalKcal)
-
+    fun getTotalKcalFromSavedState(): Float {
+        return savedStateHandle["total_kcal"] ?: getSavedKcal()
     }
 }

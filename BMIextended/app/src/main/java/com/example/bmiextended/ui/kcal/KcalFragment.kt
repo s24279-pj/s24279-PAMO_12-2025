@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.SeekBar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.SavedStateViewModelFactory
 import com.example.bmiextended.databinding.FragmentKcalBinding
 
 class KcalFragment : Fragment() {
@@ -14,7 +15,9 @@ class KcalFragment : Fragment() {
     private var _binding: FragmentKcalBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: KcalViewModel by viewModels()
+    private val viewModel: KcalViewModel by viewModels{
+        SavedStateViewModelFactory(requireActivity().application, this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
