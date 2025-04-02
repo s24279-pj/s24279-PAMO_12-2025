@@ -1,6 +1,11 @@
 <resources>
-    <string name="app_name">BMIextended</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
+    <string name="app_name">Health App</string>
+    <string name="title_bmi">BMI</string>
     <string name="title_notifications">Notifications</string>
+    <string name="title_kcal">Kcal Calculator</string>
+    <string name="input_age">Enter your age</string>
+    <string name="input_weight">Enter your weight (kg)</string>
+    <string name="input_height">Enter your height (cm)</string>
+    <string name="btn_kcal">Calculate kcal</string>
+    <string name="mrg_input_top">32</string>
 </resources>

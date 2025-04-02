@@ -12,10 +12,10 @@
         tools:layout="@layout/fragment_bmi" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.bmiextended.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_kcal"
+        android:name="com.example.bmiextended.ui.kcal.KcalFragment"
+        android:label="@string/title_kcal"
+        tools:layout="@layout/fragment_kcal" />
 
     <fragment
         android:id="@+id/navigation_notifications"
