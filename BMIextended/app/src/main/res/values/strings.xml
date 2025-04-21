@@ -8,4 +8,11 @@
     <string name="input_height">Enter your height (cm)</string>
     <string name="btn_kcal">Calculate kcal</string>
     <string name="mrg_input_top">32</string>
+    <string name="bmi_calculator">BMI Calculator</string>
+    <string name="enter_weight_kg">Enter weight (kg)</string>
+    <string name="enter_height_cm">Enter height (cm)</string>
+    <string name="calculate_bmi">Calculate BMI</string>
+    <string name="recipe_name">Recipe Name</string>
+    <string name="_200_kcal">200 kcal</string>
+    <string name="recipe_description">Recipe Description</string>
 </resources>
