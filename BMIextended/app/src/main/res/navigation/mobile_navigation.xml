@@ -22,4 +22,16 @@
         android:name="com.example.bmiextended.ui.recipe.RecipeFragment"
         android:label="@string/title_recipes"
         tools:layout="@layout/fragment_recipe" />
+
+    <fragment
+        android:id="@+id/navigation_shopping_list"
+        android:name="com.example.bmiextended.ui.shoppingList.ShoppingListFragment"
+        android:label="Lista zakupów"
+        tools:layout="@layout/fragment_shopping_list" />
+
+    <fragment
+        android:id="@+id/navigation_bmi_chart"
+        android:name="com.example.bmiextended.ui.chart.BmiChartFragment"
+        android:label="Historia BMI"
+        tools:layout="@layout/fragment_bmi_chart" />
 </navigation>

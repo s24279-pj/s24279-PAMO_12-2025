@@ -61,6 +61,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="32dp" />
 
+    <Button
+        android:id="@+id/historyButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pokaż historię BMI"
+        app:layout_constraintTop_toBottomOf="@id/bmiMessage"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="16dp"/>
+
+
     <TextView
         android:id="@+id/bmiResult"
         android:layout_width="wrap_content"

@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import com.example.bmiextended.R
 import com.example.bmiextended.databinding.FragmentBmiBinding
 
 
@@ -42,6 +44,10 @@ class BmiFragment : Fragment() {
             val weight = binding.weightInput.text.toString()
             val height = binding.heightInput.text.toString()
             viewModel.calculateBMI(weight, height)
+        }
+
+        binding.historyButton.setOnClickListener {
+            findNavController().navigate(R.id.navigation_bmi_chart)
         }
     }
 
