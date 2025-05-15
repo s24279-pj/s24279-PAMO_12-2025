@@ -40,7 +40,7 @@ class RecipeFragment : Fragment() {
 
         recipeViewModel.recipes.observe(viewLifecycleOwner) { recipes ->
             recipeAdapter = RecipeAdapter(recipes) { selectedRecipe ->
-                findNavController().navigate(R.id.navigation_shopping_list)
+                findNavController().navigate(R.id.shoppingListFragment)
             }
             binding.recipeRecyclerView.adapter = recipeAdapter
         }

@@ -1,8 +1,6 @@
 package com.example.bmiextended.adapter
 
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.CheckBox
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bmiextended.R
@@ -13,26 +11,25 @@ class ShoppingListAdapter(
     private val onCheckedChange: (Int) -> Unit
 ) : RecyclerView.Adapter<ShoppingListAdapter.VH>() {
 
-    inner class VH(view: View) : RecyclerView.ViewHolder(view) {
+    inner class VH(view: View): RecyclerView.ViewHolder(view) {
         val cb: CheckBox = view.findViewById(R.id.checkBox)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_shopping, parent, false)
-        return VH(view)
+    override fun onCreateViewHolder(p: ViewGroup, vt: Int) =
+        LayoutInflater.from(p.context)
+            .inflate(R.layout.item_shopping, p, false)
+            .let { VH(it) }
+
+    override fun onBindViewHolder(h: VH, i: Int) {
+        val it = items[i]
+        h.cb.text = it.name
+        h.cb.isChecked = it.isChecked
+        h.cb.setOnClickListener { onCheckedChange(i) }
     }
 
-    override fun onBindViewHolder(holder: VH, position: Int) {
-        val item = items[position]
-        holder.cb.text = item.name
-        holder.cb.isChecked = item.isChecked
-        holder.cb.setOnClickListener { onCheckedChange(position) }
-    }
-
-    override fun getItemCount(): Int = items.size
+    override fun getItemCount() = items.size
 
     fun updateList(newItems: List<ShoppingItem>) {
-        items = newItems
-        notifyDataSetChanged()
+        items = newItems; notifyDataSetChanged()
     }
 }

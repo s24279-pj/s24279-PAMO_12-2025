@@ -14,16 +14,13 @@ class ShoppingListFragment : Fragment() {
     private val viewModel: ShoppingListViewModel by viewModels()
     private lateinit var adapter: ShoppingListAdapter
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        _binding = FragmentShoppingListBinding.inflate(inflater, container, false)
-        return binding.root
-    }
+    override fun onCreateView(inflater: LayoutInflater, c: ViewGroup?, b: Bundle?) =
+        FragmentShoppingListBinding.inflate(inflater, c, false).also { _binding = it }.root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        adapter = ShoppingListAdapter(emptyList()) { position ->
-            viewModel.toggleItemChecked(position)
+        adapter = ShoppingListAdapter(emptyList()) { pos ->
+            viewModel.toggleItemChecked(pos)
         }
-
         binding.shoppingRecyclerView.layoutManager = LinearLayoutManager(context)
         binding.shoppingRecyclerView.adapter = adapter
 

@@ -15,4 +15,8 @@
     <string name="recipe_name">Recipe Name</string>
     <string name="_200_kcal">200 kcal</string>
     <string name="recipe_description">Recipe Description</string>
+    <string name="shopping_item">Shopping Item</string>
+    <string name="lista_zakup_w">Lista zakupów</string>
+    <string name="shopping">Shopping</string>
+    <string name="poka_histori_bmi">Pokaż historię BMI</string>
 </resources>

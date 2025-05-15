@@ -24,9 +24,9 @@
         tools:layout="@layout/fragment_recipe" />
 
     <fragment
-        android:id="@+id/navigation_shopping_list"
+        android:id="@+id/shoppingListFragment"
         android:name="com.example.bmiextended.ui.shoppingList.ShoppingListFragment"
-        android:label="Lista zakupów"
+        android:label="@string/lista_zakup_w"
         tools:layout="@layout/fragment_shopping_list" />
 
     <fragment
